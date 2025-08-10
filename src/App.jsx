@@ -7,7 +7,7 @@ import { MemoryWallView } from "./components/views/MemoryWallView";
 import { GiftBoxView } from "./components/views/GiftBoxView";
 import { TimelineView } from "./components/views/TimelineView";
 import { WishModal } from "./components/WishModal";
-import { UtilityModal } from "./components/UtilityModal.JSX";
+import { UtilityModal } from "./components/UtilityModal.jsx";
 import { Loading } from "./components/LoadingComponent";
 
 const App = () => {
