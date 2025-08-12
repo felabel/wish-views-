@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BackgroundMusicPlayer } from "./components/BackgroundMusicPlayer";
 import { ConstellationView } from "./components/views/ConstellationView";
@@ -29,7 +29,6 @@ const App = () => {
   console.log("Wish Data State:", wishDataState);
 
   const wishDataToUse = wishDataState;
-  //  || wishData;
   const contributors = wishDataToUse?.data?.contributors;
   const recipientName = wishDataToUse?.data?.recipient;
   const mainWish = contributors && contributors[contributors.length - 1];
@@ -84,7 +83,6 @@ const App = () => {
         `}
       </style>
 
-      {/* Fixed Navigation Tab */}
       <nav className="fixed left-0 right-0 top-0 z-40 flex flex-wrap justify-center space-x-2 bg-slate-900/80 p-4 shadow-lg backdrop-blur-sm text-white md:space-x-4">
         <button
           className={`rounded-full px-4 py-2 font-bold transition-colors duration-300 ${
@@ -125,19 +123,7 @@ const App = () => {
         >
           Gift Box
         </button>
-        <button
-          className={`rounded-full px-4 py-2 font-bold transition-colors duration-300 ${
-            viewMethod === "memorywall"
-              ? "bg-orange-600"
-              : "bg-transparent hover:bg-white/10"
-          }`}
-          onClick={() => {
-            setViewMethod("memorywall");
-            setIsUnwrapped(false);
-          }}
-        >
-          Memory Wall
-        </button>
+
         <button
           className={`rounded-full px-4 py-2 font-bold transition-colors duration-300 ${
             viewMethod === "timeline"
@@ -154,7 +140,6 @@ const App = () => {
       </nav>
 
       <>
-        {/* Main Content View with AnimatePresence */}
         <AnimatePresence mode="wait">
           <motion.div
             key={viewMethod}
@@ -202,7 +187,6 @@ const App = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Floating utility buttons */}
         <div className="fixed bottom-4 left-1/2 z-30 flex -translate-x-1/2 flex-wrap justify-center space-x-2 md:space-x-4 w-full gap-2">
           <button
             className="rounded-full bg-violet-600 px-4 py-2 font-bold text-white shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-violet-500"
@@ -230,10 +214,8 @@ const App = () => {
           </button>
         </div>
 
-        {/* Music player component */}
         <BackgroundMusicPlayer />
 
-        {/* Modals with animations */}
         <AnimatePresence>
           {selectedWish && (
             <WishModal

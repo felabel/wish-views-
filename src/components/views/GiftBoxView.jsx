@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import bg from "../../assets/bg.png";
 
 export const GiftBoxView = ({
   contributors,
@@ -8,7 +9,6 @@ export const GiftBoxView = ({
   isUnwrapped,
   setIsUnwrapped,
 }) => {
-  // Now accepts props
   const confettiColors = [
     "#f44336",
     "#e91e63",
@@ -81,7 +81,7 @@ export const GiftBoxView = ({
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        // staggerChildren: 0.1,
         delayChildren: 1.5,
       },
     },
@@ -94,7 +94,7 @@ export const GiftBoxView = ({
       opacity: 1,
       scale: 1,
       transition: {
-        type: "spring",
+        // type: "spring",
         stiffness: 150,
         damping: 10,
       },
@@ -103,14 +103,16 @@ export const GiftBoxView = ({
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-purple-800 to-indigo-900 font-['Baloo_2'] text-white pt-24 md:pt-16">
-      <div className="absolute inset-0 z-0 opacity-20">
+      <div
+        className="absolute inset-0 z-0 opacity-20"
+        style={{
+          backgroundImage: `url(${bg})`,
+          opacity: 1,
+          zIndex: 0,
+        }}
+      >
         <motion.div
           className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(http://googleusercontent.com/file_content/1)`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "cover",
-          }}
           animate={{
             backgroundPosition: ["0% 0%", "100% 100%"],
           }}
@@ -148,7 +150,7 @@ export const GiftBoxView = ({
             >
               Unwrap Me!
             </motion.button>
-            <p className="mt-4 text-sm text-gray-300">
+            <p className="mt-4 text-lg text-white text-medium bg-pink-400 p-4 rounded-lg shadow-lg">
               Click the box to reveal your wishes!
             </p>
           </motion.div>
@@ -202,9 +204,12 @@ export const GiftBoxView = ({
               variants={containerVariants}
               animate="unwrapped"
             >
-              <h1 className="mb-8 text-center text-4xl font-extrabold tracking-tight bg-gradient-to-r from-violet-400 to-pink-500 bg-clip-text text-transparent md:text-6xl">
-                {recipientName}'s Wishes
-              </h1>
+              <div className="bg-gradient-to-r from-pink-400 to-yellow-300 mb-8 px-6 md:px-12 rounded-lg shadow-lg">
+                <h1 className=" text-center text-4xl font-extrabold tracking-tight bg-gradient-to-r from-violet-400 to-pink-500 bg-clip-text text-transparent md:text-6xl">
+                  {recipientName}'s Wishes
+                </h1>
+              </div>
+
               <motion.div
                 className="grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
                 variants={cardContainerVariants}
@@ -214,11 +219,12 @@ export const GiftBoxView = ({
                 {contributors.map((wish, index) => (
                   <motion.div
                     key={wish.id}
-                    className="cursor-pointer rounded-xl bg-white/10 p-6 shadow-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
+                    className="cursor-pointer rounded-xl bg-purple-500 p-6 shadow-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-purple-400"
                     variants={cardVariants}
+                    whileHover={{ scale: 1.08 }}
                     onClick={() => handleStarClick(wish)}
                   >
-                    <h3 className="mb-2 text-2xl font-bold text-violet-300">
+                    <h3 className="mb-2 text-2xl font-bold text-violet-200">
                       {wish.contributor_name}
                     </h3>
                     <p className="italic text-gray-200">
