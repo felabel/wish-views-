@@ -11,7 +11,7 @@ import { UtilityModal } from "./components/UtilityModal.jsx";
 import { Loading } from "./components/LoadingComponent";
 
 const App = () => {
-  const [viewMethod, setViewMethod] = useState("constellation");
+  const [viewMethod, setViewMethod] = useState("giftbox");
   const [isUnwrapped, setIsUnwrapped] = useState(false);
   const [selectedWish, setSelectedWish] = useState(null);
   const [utilityModal, setUtilityModal] = useState(null);
@@ -86,6 +86,19 @@ const App = () => {
       <nav className="fixed left-0 right-0 top-0 z-40 flex flex-wrap justify-center space-x-2 bg-slate-900/80 p-4 shadow-lg backdrop-blur-sm text-white md:space-x-4">
         <button
           className={`rounded-full px-4 py-2 font-bold transition-colors duration-300 ${
+            viewMethod === "giftbox"
+              ? "bg-purple-600"
+              : "bg-transparent hover:bg-white/10"
+          }`}
+          onClick={() => {
+            setViewMethod("giftbox");
+            setIsUnwrapped(false);
+          }}
+        >
+          Gift Box
+        </button>
+        <button
+          className={`rounded-full px-4 py-2 font-bold transition-colors duration-300 ${
             viewMethod === "constellation"
               ? "bg-violet-600"
               : "bg-transparent hover:bg-white/10"
@@ -109,19 +122,6 @@ const App = () => {
           }}
         >
           Scrapbook
-        </button>
-        <button
-          className={`rounded-full px-4 py-2 font-bold transition-colors duration-300 ${
-            viewMethod === "giftbox"
-              ? "bg-purple-600"
-              : "bg-transparent hover:bg-white/10"
-          }`}
-          onClick={() => {
-            setViewMethod("giftbox");
-            setIsUnwrapped(false);
-          }}
-        >
-          Gift Box
         </button>
 
         <button
