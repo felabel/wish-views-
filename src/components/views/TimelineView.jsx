@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import bg from "../../assets/bg.png";
 
 export const TimelineView = ({
   contributors,
@@ -25,14 +26,23 @@ export const TimelineView = ({
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-900 to-slate-800 font-['Baloo_2'] text-white pt-24 md:pt-16">
+    <div
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-900 to-slate-800 font-['Baloo_2'] text-white pt-24 md:pt-16"
+      style={{
+        backgroundImage: `url(${bg})`,
+        opacity: 1,
+        zIndex: 0,
+      }}
+    >
       <div className="relative z-10 flex h-full flex-col items-center p-4">
-        <h1 className="mb-8 text-center text-4xl font-extrabold text-lime-400 md:text-6xl">
-          {recipientName}'s Wish Timeline
-        </h1>
-        <p className="mb-12 text-center text-lg italic text-gray-300 md:text-xl">
-          Wishes, in the order they were received.
-        </p>
+        <div className="mb-12 bg-gradient-to-r from-pink-600 to-yellow-700  p-4 rounded-lg shadow-lg">
+          <h1 className="mb-4 text-center text-4xl font-extrabold text-lime-400 md:text-6xl">
+            {recipientName}'s Wish Timeline
+          </h1>
+          <p className=" text-center text-xl italic text-gray-300 md:text-2xl">
+            Wishes, in the order they were received.
+          </p>
+        </div>
 
         <div className="relative w-full max-w-2xl px-4">
           {/* The main vertical timeline line */}

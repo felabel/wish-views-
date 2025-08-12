@@ -42,11 +42,6 @@ export const ScrapbookView = ({
       {/* Dynamic Background */}
       <motion.div
         className="fixed inset-0 z-0"
-        style={{
-          backgroundImage: `url(http://googleusercontent.com/file_content/1)`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "cover",
-        }}
         animate={{
           backgroundPosition: ["0% 0%", "100% 100%"],
         }}
